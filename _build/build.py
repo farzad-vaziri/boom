@@ -116,7 +116,7 @@ def layout(title, body, depth=0, active=None, desc=None):
       <button type="submit" aria-label="جست‌وجو">{icon('search')}</button>
     </form>
     <div class="header-actions">
-      <span class="btn-ghost" aria-disabled="true" title="به‌زودی">{icon('user')}ورود | ثبت‌نام</span>
+      <button class="btn-ghost auth-btn" type="button" id="auth-btn" aria-haspopup="dialog">{icon('user')}<span class="lbl">ورود | ثبت‌نام</span></button>
       <button class="icon-btn theme-toggle" type="button" aria-label="تغییر حالت روز و شب">{icon('moon', 'icon moon')}{icon('sun', 'icon sun')}</button>
     </div>
   </div>
@@ -154,6 +154,8 @@ def layout(title, body, depth=0, active=None, desc=None):
 </footer>
 <nav class="bottom-nav">{bnav}</nav>
 <script src="{r}assets/js/main.js"></script>
+<script src="{r}assets/js/vendor/supabase.js" defer></script>
+<script src="{r}assets/js/member.js" defer></script>
 </body>
 </html>
 '''
@@ -279,6 +281,7 @@ def book_page(b):
     <ul class="credit-list">{cr}</ul>
     <div class="chips"><span class="chip">{icon("calendar")}{E(b["date"])}</span><span class="chip">{icon("pages")}{fa(b["pages"])} صفحه</span>{price_pill(b)}</div>
     <div class="book-actions"><a class="btn-gold" href="#sample">{icon("eye")}مطالعه‌ی نمونه</a><a class="btn-ghost" href="{sample}" download>{icon("download")}دریافت نمونه (PDF)</a></div>
+    <div class="full-access" data-slug="{b["slug"]}" hidden aria-live="polite"></div>
   </div>
 </div>
 <div class="card"><h2>درباره‌ی <q>{E(b["title"])}</q></h2><div class="prose">{about_book}</div></div>
